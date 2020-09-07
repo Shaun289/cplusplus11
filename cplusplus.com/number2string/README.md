@@ -42,7 +42,7 @@ C++ 11 에서는 기본타입들을 std::string으로 바로 변경하는 함수
 std::to_string 은 기본 숫자 타이을 문자열로 바꿔줍니다. 자세한 내용은 [std::string](http://cplusplus.com/reference/string/) 참조
 
 ## C++ Boost Library
-파일명 : [number2_string_boost.cpp]
+파일명 : [number2_string_boost.cpp](./number2_string_boost.cpp)
 
 standard C++에서 stringstream으로 바꾸는 방법은 몇줄이 필요하기때문에 Boost library에서는 간단히 lexical_cast 함수를 사용합니다.
 
