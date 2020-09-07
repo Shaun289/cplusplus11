@@ -57,11 +57,38 @@ static void ss_custom_formatting()
     cout << Result << endl;
 }
 
+// string to number using stringstream
+static void ss_string2num()
+{
+    string Text = "456";
+    int Result = 0;
+    istringstream convert(Text);
+
+    if ( !(convert >> Result)) {
+        Result = 0; // if fails st result as 0 
+    }
+
+    cout << Result << endl;
+}
+
+// string2num shorten
+static void ss_string2num_shorten()
+{
+    string Text = "456";
+    int Number = 0;
+    if ( ! (istringstream(Text) >> Number)) {
+        Number = 0; // if failed
+    }
+    cout << Number << endl;
+}
+
 int main()
 {
     ss_num2string();
     ss_num2string_shorten();
     ss_custom_formatting();
+    ss_string2num();
+    ss_string2num_shorten();
 
     return 0;
 }
