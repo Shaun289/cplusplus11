@@ -54,3 +54,10 @@ boost를 사용하기 위해 다음과 같이 설치하였습니다.
 $ sudo apt install libboost-dev
 ```
 
+## C - stdio, stdlib
+sprintf, sscanf, atoi, itoa 등은 패스하도록 하겠습니다.
+
+## 직접 코드 짜기
+파일명 : [number2_string_own.cpp](./number2_string_own.cpp)
+
+직접 코드 짜보라며 "The C Programming Language" 의 내용을 소개합니다. 재밌는건 itoa는 음수 처리가 되어있으면서, atoi는 음수 처리가 안되어있네요. 그래서 저는 간단히 처리해봤습니다.
