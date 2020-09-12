@@ -122,7 +122,37 @@ static void cpp11_initializer_complex()
 
 static void cpp11_array()
 {
+    // C++11 에 추가되었다고 합니다. C++03에서는 쓸수 없는듯?
+    array<char, 3> cpparray1{{'A', 'B', 'C'}};
+    array<float, 2> cpparray2{{0.2f, 33.33f}};
+    // 관찰 1 : 컴파일할때 배열의 크기를 추론할 수 있어야합니다. 
+    // 컴파일할때 배열의 크기를 지정해줘야하는걸꺄요? 
+    // 개수를 변수로 지정해주는 경우도 있을텐데요. 해보죠.
+    const int n = 10;
+    array<int, n> cpparray3 = {0,};
+    // n을 const로 지정하지 않으면 에러가 발생합니다.
+    // 컴파일할때 배열의 크기를 지정해줘야하는게 맞네요.
+    // 관찰 2 : 배열의 크기는 변경할 수 없습니다.
+    // 관찰 3 : 내부 중괄호는 초기화 리스트의 특성에서 기인합니다.
+    // 템플릿 파라메터당 리스트 하나로 생각하면 됩니다.
+    // 초기화에 중괄호가 두개인 이유를 설명하는것 같은데 이해가 잘 안되네요.
 
+    // size 계산이 간단해서 좋네요.
+    cout << cpparray1.size() << endl;
+    cout << cpparray2.size() << endl;
+
+    try 
+    {
+        cpparray2.at(-5) = 0.1f; // throw std::out_of_range exception
+    }
+    catch (out_of_range &e)
+    {
+        cout << e.what() << endl;
+    }
+    
+
+    // 물론 왜 c배열보다 c++배열인지 더 많은 이유가 있습니다.
+    // 하지만 이 예제 만으로도 충분히 큽니다.
 }
 
 int main()
