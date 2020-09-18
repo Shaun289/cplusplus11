@@ -1,7 +1,7 @@
 # [C++11 Variadic templates 가변템플릿](http://cplusplus.com/articles/EhvU7k9E/)
 
 - [cplusplus.com](http://cplusplus.com/) -> articles -> c++11
-코드: [cpp11_variadic_templates.cpp](./cpp11_variadic_templates.cpp)
+
 
 ## Introduction
 C++11 가능성의 이전에는 인스턴스 함수 객체(functors)와 튜플 을 구현할때 템플릿 사용성이 꽤 제한되었습니다. 이전 C++ 표준에서 이런 것들을 구현할때는 전처리 메타 프로그래밍을 쓰지않으려면 종종 비슷한 코드가 반복되는게 필요했습니다. 그러나 고맙게도 템플릿을 이용한 새로운 기능인 가변 템플릿을 사용하면 쉽고 명료하고 보다 메모리 효율적이 되었습니다.
@@ -119,9 +119,83 @@ void SampleFunction(Arguments......) {
 }
 ```
 
-주 : 그래..이렇게 쓸일이 있겠다...퍽이나
+## 가변 템플릿의 사용 - 상속 & 초기화 리스트:
+클래스에서 가변 템플릿은 상속과 리스트 초기하와 함께 사용할 수 있습니다. 가변 템플릿의 이점을 가져가는 상속은 아래와 같은 장점이 있습니다.
 
+```cpp
+template<typename... BaseClasses>
+class VariadicTemplate : Public BaseClasses...
+```
 
+주 : class A를 상속받는 B,C,D 가 있다고 할때 필요에 따라 B,C,D를 상속받을 수 있는 E를 만들수 있겠네요. 신박하네요!
+
+그리고 만약 템플릿 매개변수로 주어진 모든 부모 클래스의 생성자를 부르는 초기화 리스트 클래스 안에서 생성자를 만든다면, 아래와 같이 할 수 있습니다. 
+
+```cpp
+template<typename...BaseClasses>
+class VariadicTemplate : public BaseClasses... {
+public:
+    VariadicTemplate(BaseClasses&&... base_classes) : BaseClasses(base_classes)... {
+
+    }
+};
+```
+
+여기서 보는것처럼, C++11에서 생성자의 매개변수 리스트라는 새로운 연산자가 있습니다. - *an rvalue operator(&&)*, rvalue 참조를 허용합니다. 이 문서는 이 연산자를 커버하지 않습니다만, 이 연산자를 어떻게 사용하는지에 대한 정보는 [C++ Rvalue References Explained
+](http://thbecker.net/articles/rvalue_references/section_01.html)를 참조하세요.
+
+# 가변 템플릿의 사용 - 가변 클래스 템플릿 전문화(?):
+클래스 템플릿처럼, 가변 클래스 템플릿도 전문화될 수 있습니다. 템플릿과 함께 전문화는 다음과 같습니다:
+
+```cpp
+template<typename T>
+class Template{
+public:
+    void SampleFunction(T param) {
+
+    }
+};
+
+```
+
+하지만 가변 템플릿과 함께 다음과 같습니다:
+
+```cpp
+template<typename... Arguments>
+class VariadicTemplate {
+public:
+    void SampleFunction(Arguments... params) {
+
+    }
+};
+
+template<>
+class VariadicTemplate<double, int long> {
+public:
+    void SampleFunction(double param1, int param2, long param3) {
+
+    }
+};
+```
+
+주 : 가변 템플릿을 정의해놓고 특수한 매개변수에 대해서는 전문화하여 따로 구현할 수 있다는 뜻입니다.
+
+주의 : 아직 몇몇 컴파일러는 가변 클래스 템플릿 전문화를 지원하지 않거나 구현이 완료되지 않았습니다.
+
+## 같이보기:
+가변 템플릿을 활용하는 C++11 표준 클래스 템플릿에 관심이 있다면, 다음의 튜플에 대해 확인하세요.
+[std::tuple](http://www.cplusplus.com/reference/tuple/tuple/)
+
+가변 템플릿이 유용한 또다른 필드는 *delegates* 입니다. 만약 **managed C++** and/or C# 에 익숙하다면, C++ delegates는 문제가 아닐것입니다. 
+
+## 결론
+템플릿은 C++에서 강력한 특징이었습니다. 이제 가변 템플릿의 소개로 템플릿은 더 강력하다는 것을 증명하게 됩니다. 가변 템플릿은 *delegate*와 *tuple*을 구현하는 믿을수 있는 솔루션입니다. 그리고 C스타일의 줄임표 메커니즘 대신에 가변 템플릿은 타입안전한 솔루션으로 대체할 것입니다.
+
+## 컴파일러 지원에 관한 더 많은 정보
+만약 컴파일러의 지원에 잘 모르거나 익숙하지 않으면 아래 링크를 방문하세요.
+http://wiki.apache.org/stdcxx/C++0xCompilerSupport
 
 ## Reference
 [Microsoft 설명서 : 줄임표 및 Variadic 템플릿](https://docs.microsoft.com/ko-kr/cpp/cpp/ellipses-and-variadic-templates?view=vs-2019)
+
+
