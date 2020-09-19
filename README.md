@@ -16,4 +16,4 @@ Study for c++11
 - clang
 - CMake
 - [C++ Rvalue References Explained](http://thbecker.net/articles/rvalue_references/section_01.html)
-- C++ delegates
+- [C++ delegates](https://docs.microsoft.com/ko-kr/cpp/dotnet/how-to-define-and-use-delegates-cpp-cli?view=vs-2019)
