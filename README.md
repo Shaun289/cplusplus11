@@ -11,9 +11,11 @@ Study for c++11
 - [Converting numbers to strings and strings to numbers](./cplusplus.com/number2string)
 - [C++11 improvements over C++03](./cplusplus.com/cpp11_improvements/)
 - [C++11 - Variadic templates](./cplusplus.com/cpp11_variadic_templates)
+- [Pointers and References](./cplusplus.com/pointers_and_refs)
 
 # TODO
 - clang
 - CMake
 - [C++ Rvalue References Explained](http://thbecker.net/articles/rvalue_references/section_01.html)
 - [C++ delegates](https://docs.microsoft.com/ko-kr/cpp/dotnet/how-to-define-and-use-delegates-cpp-cli?view=vs-2019)
+- [C++ tuples](https://docs.microsoft.com/ko-kr/cpp/standard-library/tuple-functions?view=vs-2019)
