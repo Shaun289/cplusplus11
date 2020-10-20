@@ -14,6 +14,9 @@ Study for c++11
 - [Pointers and References](./cplusplus.com/pointers_and_refs)
 - [Caesar cipher](./cplusplus.com/caesar_cipher)
 
+# cpp11 study (cont,)
+- [unique_ptr](./cpp11/unique_ptr.cpp)
+
 # TODO
 - clang
 - CMake
