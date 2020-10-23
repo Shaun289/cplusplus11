@@ -16,6 +16,7 @@ Study for c++11
 
 # cpp11 study (cont,)
 - [unique_ptr](./cpp11/unique_ptr.cpp)
+- [shared_ptr](./cpp11/shared_ptr.cpp)
 
 # TODO
 - clang
