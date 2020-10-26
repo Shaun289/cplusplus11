@@ -1,5 +1,6 @@
 #include <iostream>
 #include <memory>
+#include <vector>
 
 // reference : https://modoocode.com/229
 
@@ -47,9 +48,21 @@ void doUniqueA()
     a->do_some();
 }
 
+void vectorUnique()
+{
+    vector<unique_ptr<A>> vec;
+
+    unique_ptr<A> pa(new A());
+    vec.push_back(move(pa));
+
+    // vector is defined as unique_ptr<A>
+    vec.emplace_back(new A());
+}
+
 int main(int argc, char* argv[])
 {
     doA();
     doUniqueA();
+    vectorUnique();
     return 0;
 }
