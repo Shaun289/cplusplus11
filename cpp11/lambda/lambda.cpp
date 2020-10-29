@@ -12,6 +12,8 @@ int main()
     vector<int> in = { 264,226,264525,26,26,25};
     vector<int> out;
 
+    //[my_mod]() {my_mod -= 4; }(); // Compile error
+
     out.resize(in.size());
 
     transform(in.begin(), in.end(), out.begin(),
