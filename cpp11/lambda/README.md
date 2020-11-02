@@ -29,6 +29,25 @@ lambda.cpp:15:24: error: assignment of read-only variable ‘my_mod’
       |                 ~~~~~~~^~~~
 ```
 
+### Capture 시점
+
+```cpp
+int v = 42;
+auto func = [=]() {
+  cout << "inner=" << v << endl;
+  // inner=43
+};
+v = 8;
+func();
+cout <<"outer="<< v << endl;
+// outer=8
+```
+
+- 객체를 할당할때 캡쳐가 일어납니다.
+- 함수 호출 시점에 이미 v값이 바뀌어있으므로 바뀐 값으로 func()이 호출될 것처럼 보입니다만,
+- 객체를 할당할때 람다함수 메모리 공간에 모두 copy해놓기 때문에 바깥의 v값과 별개입니다.
+- 헷갈릴 여지가 있으므로 주의가 필요합니다.
+
 ## [transform](http://cplusplus.com/reference/algorithm/transform/?kw=transform)
 - 람다함수에는 transform 이 빠질 수 없죠.
 - UnaryOperator op 에 람다함수를 넣어주면 됩니다. 참 쉽죠?
