@@ -48,6 +48,16 @@ cout <<"outer="<< v << endl;
 - 객체를 할당할때 람다함수 메모리 공간에 모두 copy해놓기 때문에 바깥의 v값과 별개입니다.
 - 헷갈릴 여지가 있으므로 주의가 필요합니다.
 
+### Lambda 의 저장과 전달
+
+- std::function<반환타입(인자)>
+  - 명시적 선언이므로 재귀적으로 사용 가능
+
+### Capture class member
+
+- 람다는 암묵적으로 클래스의 this를 캡쳐하기때문에 멤버변수에 접근 가능하답니다.
+
+
 ## [transform](http://cplusplus.com/reference/algorithm/transform/?kw=transform)
 - 람다함수에는 transform 이 빠질 수 없죠.
 - UnaryOperator op 에 람다함수를 넣어주면 됩니다. 참 쉽죠?

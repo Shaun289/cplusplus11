@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <functional>
 
 using namespace std;
 
@@ -61,6 +62,49 @@ void testCloser()
 
 }
 
+class gorp {
+    vector<int> values;
+    int m_;
+
+    public:
+    gorp(int mod) : m_(mod) {};
+    gorp& put(int v) {
+        values.push_back(v);
+        return *this;
+    }
+    int extras() {
+        int count = 0;
+        for_each(values.begin(), values.end(), [=, &count](int v) { count += (v%m_); });
+        return count;
+    }
+};
+
+void testCaptureMember()
+{
+    gorp g(4);
+    g.put(3).put(7).put(8);
+    cout << "extras:" << g.extras() << endl;
+}
+
+void testStdFunction()
+{
+    std::function<int(std::string const &)> f;
+
+    f = [](std::string const &s) -> int { return s.size();};
+    cout << __func__ << " size = " << f(__func__) << endl;
+
+    std::function<int(int)> fact;
+    fact = [&fact](int n) -> int {
+        if (n == 0) {
+            return 1;
+        }
+        else {
+            return (n * fact(n-1));
+        }
+    };
+    cout << "factorial(4) = " << fact(4) << endl;
+}
+
 int main()
 {
     int my_mod = 8;
@@ -79,6 +123,8 @@ int main()
 
     testCapture();
     testCloser();
+    testCaptureMember();
+    testStdFunction();
 
     return 0;
 }
