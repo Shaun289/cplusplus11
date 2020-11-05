@@ -28,7 +28,32 @@ void testCopyElision()
 
 }
 
+string getName()
+{
+    return "alex";
+}
+
+void printReference(const string& str)
+{
+    cout << __func__ << " : lvalue " << str << endl;
+}
+
+void printReference(string&& str)
+{
+    cout << __func__ << " : rvalue " << str << endl;
+}
+
+void testRvalueReference()
+{
+    string str = "alex";
+    printReference(str);
+    printReference(getName());
+}
+
 int main()
 {
     testCopyElision();
+    testRvalueReference();
+
+    return 0;
 }

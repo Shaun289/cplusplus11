@@ -26,4 +26,4 @@ Study for c++11
 - [C++ Rvalue References Explained](http://thbecker.net/articles/rvalue_references/section_01.html)
 - [C++ delegates](https://docs.microsoft.com/ko-kr/cpp/dotnet/how-to-define-and-use-delegates-cpp-cli?view=vs-2019)
 - [C++ tuples](https://docs.microsoft.com/ko-kr/cpp/standard-library/tuple-functions?view=vs-2019)
-- C++ Lambda
+- mutable
