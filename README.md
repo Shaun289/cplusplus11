@@ -19,6 +19,7 @@ Study for c++11
 - [shared_ptr](./cpp11/shared_ptr.cpp)
 - [rvalue](./cpp11/rvalue)
 - [lambda](./cpp11/lambda)
+- [c++ thread](./cpp11/cppthread)
 
 # cpp98
 - [mutable](./cpp98/mutable)
