@@ -24,6 +24,9 @@ Study for c++11
 # cpp98
 - [mutable](./cpp98/mutable)
 
+# Editor
+- [vim clang](./vim_clang)
+
 # TODO
 - clang
 - CMake
