@@ -1,5 +1,0 @@
-
-class AudioMultiPlexer {
-    AudioMultiPlexer() {};
-    ~AudioMultiPlexer() {};
-};
