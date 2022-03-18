@@ -1,0 +1,13 @@
+AudioMux_run
+AudioMux_test
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+libAudioMux_lib.a
+src/CMakeFiles/
+src/Makefile
+src/cmake_install.cmake
+test/CMakeFiles/
+test/Makefile
+test/cmake_install.cmake

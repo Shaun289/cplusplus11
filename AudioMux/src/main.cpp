@@ -1,12 +1,14 @@
 #include <iostream>
 
-#include "Producer.h"
+#include "Generator.h"
 #include "Encoder.h"
 
 int main(int argc, char* argv[])
 {
-    Producer producer;
+    Generator producer;
     Encoder encoder;
+
+    producer.setEncoder(&encoder);
 
     producer.run();
     encoder.run();

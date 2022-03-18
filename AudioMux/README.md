@@ -10,42 +10,43 @@
 - 주의사항
   - Producer Consumer Pattern 정확하게 사용할것
   - conditiona_variable 의 signal lose 조심
+  - std::queue 는 thread-safe하지 않음. 실제로는 직접 thread safe하게 작성한 Circle-Queue 를 사용함
 
 ## Audio Multiplexer
 
+```
+                +---------+             
+                | Player  |--------+     
+                +---------+        |                      
++-----------+   +---------+        |        +---------+   +---------+   +---------+ 
+| Generator |---| Encoder |-+------+------+-| Decoder |---| Play    |-+-| Analog  |
++-----------+   +---------+ |             | +---------+   +---------+ | +---------+
+                            |             |                           |            
+                            | +---------+ | +---------+               | +---------+
+                            +-| Record  | +-| Remote  |               +-| HDMI    |
+                              +---------+   +---------+                 +---------+
 
 ```
-               +---------+             
-               | Player  |--------+     
-               +---------+        |                      
-+----------+   +---------+        |        +---------+   +---------+   +---------+ 
-| Producer |---| Encoder |-+------+------+-| Decoder |---| Play    |-+-| Analog  |
-+----------+   +---------+ |             | +---------+   +---------+ | +---------+
-                           |             |                           |            
-                           | +---------+ | +---------+               | +---------+
-                           +-| Record  | +-| Remote  |               +-| HDMI    |
-                             +---------+   +---------+                 +---------+
 
-```
-
-### Producer
-- SDK 로부터 Audio Raw Packet 을 받음
+### Generator - Producer
+- SDK 로부터 Audio Raw Packet 을 받아 생성함
   AudioData 객체 생성하는 것으로 대체
   33ms 당 하나씩 생성
 - Encoder Queue 에 Enqueue
 
-### Encoder
+### Encoder - Consumer, Producer
 - G.726 으로 Encoding 
 - Storage, Decoder, Remote Queue 에 Enqueue
 
-### Decoder
+### Decoder - Consumer
 - Encoder/Storage 에서 온 AudioData 를 Dequeue하여 Raw Packet으로 Decoding 후 Play
 
-### Storage
+### Player - Producer
 - Encoder 에서 온 AudioData를 Storage에 Write
 - Storage에서 읽어온 AudioData를 Decoder, Remote Queue 에 Enqueue
 
 ## 구현 계획
 - 기존 기능을 c++ 11 로 구현
-- Unittest 로  gtest 도입
+- Unittest 로 gtest 도입
+- 일단 Generator와 Encoder를 구현하고 이를 바탕으로 구조화
 

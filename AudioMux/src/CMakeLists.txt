@@ -8,15 +8,13 @@ SET( LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR} )
 SET (SRC_FILES
     main.cpp 
     AudioData.cpp 
-    AudioMux.cpp 
     AudioMuxModule.cpp 
-    Producer.cpp 
+    Generator.cpp 
     Encoder.cpp 
 
     AudioData.h
-    AudioMux.h
     AudioMuxModule.h 
-    Producer.h 
+    Generator.h 
     Encoder.h 
     )
 

@@ -10,6 +10,7 @@ private:
     std::chrono::system_clock::time_point _tick;
 
 public:
+    AudioData();
     AudioData(uint32_t id, char data);
 
     void print();
