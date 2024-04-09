@@ -10,4 +10,5 @@ project(
   LANGUAGES CXX)
 
 add_subdirectory(span)
+add_subdirectory(decltype)
 

@@ -32,4 +32,5 @@ $ ./build/span/span
 
 # Reference
 - [모두의 코드 씹어먹는 C++ - <19 - 2. C++ 프로젝트를 위한 CMake 사용법>](https://modoocode.com/332)
+- [Automatically use the directory as the project name in CMake](https://stackoverflow.com/questions/12344368/automatically-use-the-directory-as-the-project-name-in-cmake)
 
