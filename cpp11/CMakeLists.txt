@@ -11,4 +11,5 @@ project(
 
 add_subdirectory(span)
 add_subdirectory(decltype)
+add_subdirectory(initializer_list)
 
