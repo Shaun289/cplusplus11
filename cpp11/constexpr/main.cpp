@@ -71,5 +71,11 @@ int main()
     show_value(v);
     show_value(v_p);
 
+    /* lambda 도 constexpr function 가능.
+     * constexpr 붙여주면 컴파일 타임에 확인해주니 되도록이면 붙이자.
+     */
+    constexpr auto lambda_incr = [](int n) { return ++n; };
+    std::cout << "Lambda increment 5 is " << lambda_incr(5) << std::endl;
+
     return 0;
 }
