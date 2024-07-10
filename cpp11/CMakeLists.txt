@@ -9,7 +9,9 @@ project(
   DESCRIPTION "cpp11 study project"
   LANGUAGES CXX)
 
-add_subdirectory(span)
+# g++ 9.4 does not support span
+#add_subdirectory(span)
 add_subdirectory(decltype)
 add_subdirectory(initializer_list)
+add_subdirectory(bitset)
 

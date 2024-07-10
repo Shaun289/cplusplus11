@@ -2,6 +2,8 @@
 #include <iostream>
 #include <memory>
 
+// clang++ -std=c++17 deep_copy.cpp
+
 class A
 {
   private:
