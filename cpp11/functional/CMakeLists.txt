@@ -2,6 +2,8 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.14)
 SET(PROJECT_NAME functional)
 PROJECT(${PROJECT_NAME} VERSION 0.1.0)
 
+set(CMAKE_BUILD_TYPE Debug)
+
 enable_testing() # CTest 지원
 
 # 라이브러리 빌드

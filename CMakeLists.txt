@@ -1,16 +1,17 @@
 cmake_minimum_required(VERSION 3.11)
+PROJECT(cplusplus11)
 
-# CTest 지원
-# https://google.github.io/googletest/quickstart-cmake.html
-# GoogleTest requires at least C++14
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+enable_testing()
 
 # googletest 빌드
 include(FetchContent)
 FetchContent_Declare(
   googletest
-  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+  GIT_REPOSITORY https://github.com/google/googletest.git
+  GIT_TAG main  # Use the main branch to get the latest version
 )
 FetchContent_MakeAvailable(googletest)
 
