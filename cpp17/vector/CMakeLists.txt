@@ -1,0 +1,12 @@
+get_filename_component(PROJECT_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME)
+string(REPLACE " " "_" PROJECT_NAME ${PROJECT_NAME})
+
+SET(CMAKE_CXX_STANDARD 20)
+
+project(
+  ${PROJECT_NAME}
+  DESCRIPTION "study"
+  LANGUAGES CXX)
+
+add_executable (${PROJECT_NAME} main.cpp)
+

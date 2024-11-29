@@ -1,10 +1,11 @@
-SET(BINARY ${CMAKE_PROJECT_NAME}_test)
-SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR} )
+SET(PROJECT_NAME "span")
+SET(CMAKE_CXX_STANDARD 20)
 
-file(GLOB_RECURSE TEST_SOURCES LIST_DIRECTORIES false *.h *.cpp)
-SET(SOURCES ${TEST_SOURCES})
+project(
+  ${PROJECT_NAME}
+  VERSION 0.1
+  DESCRIPTION "std::span study"
+  LANGUAGES CXX)
 
-add_executable(${BINARY} ${TEST_SOURCES})
-add_test(NAME ${BINARY} COMMAND ${BINARY})
-target_link_libraries(${BINARY} PUBLIC ${CMAKE_PROJECT_NAME}_lib gmock gtest pthread)
+add_executable (${PROJECT_NAME} main.cpp)
 

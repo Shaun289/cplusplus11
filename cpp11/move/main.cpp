@@ -54,7 +54,7 @@ TEST(testLinkedList, test1)
 {
     LinkedList list;
     list.push_back(1);
-    EXPECT_EQ(list.front->value(), 1);
+    EXPECT_EQ(list.front()->value(), 1);
 }
 
 int main(int argc, char** argv)

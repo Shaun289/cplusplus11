@@ -14,4 +14,7 @@ project(
 add_subdirectory(decltype)
 add_subdirectory(initializer_list)
 add_subdirectory(bitset)
+add_subdirectory(constexpr)
+add_subdirectory(lambda_function)
+add_subdirectory(optional)
 

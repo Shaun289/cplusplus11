@@ -1,0 +1,28 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.14)
+SET(PROJECT_NAME functional)
+PROJECT(${PROJECT_NAME} VERSION 0.1.0)
+
+enable_testing() # CTest 지원
+
+# 라이브러리 빌드
+#SET(LIB_FILES Functional.cpp)
+#SET(LIB_NAME lib${PROJECT_NAME})
+#ADD_LIBRARY(${LIB_NAME} STATIC ${SRC_FILES})
+
+# TEST 폴더 하위 테스트케이스 빌드
+SET(TEST_FILES
+   copy_if.cpp
+)
+
+SET(TEST_TARGET_NAME ${PROJECT_NAME})
+
+# 실행파일 구성
+ADD_EXECUTABLE(${TEST_TARGET_NAME} ${TEST_FILES})
+
+TARGET_LINK_LIBRARIES(${TEST_TARGET_NAME} 
+   gtest_main
+   #${LIB_NAME}
+)
+
+include(GoogleTest)
+gtest_discover_tests(${PROJECT_NAME}) 

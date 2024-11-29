@@ -1,7 +1,7 @@
-#include <iostream>
-#include <vector>
-#include <numeric>
 #include <gtest/gtest.h>
+#include <iostream>
+#include <numeric>
+#include <vector>
 
 TEST(test_copy_if, TestOdd)
 {
@@ -9,18 +9,9 @@ TEST(test_copy_if, TestOdd)
     std::vector<int> v2(5);
     std::iota(v1.begin(), v1.end(), 0);
 
-    std::copy_if(v1.begin(), v1.end(), v2.begin(), [] (int x) {
-            return x % 2 != 0;
-    });
+    std::copy_if(v1.begin(), v1.end(), v2.begin(), [](int x) { return x % 2 != 0; });
 
-    std::vector<int> result{1,3,5,7,9};
+    std::vector<int> result { 1, 3, 5, 7, 9 };
 
     EXPECT_EQ(v2, result);
-}
-
-int main(int argc, char* argv[])
-{
-    ::testing::InitGoogleTest(&argc, argv);
-
-    return RUN_ALL_TESTS();
 }
